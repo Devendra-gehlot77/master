@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>plan your tour</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+            <div class="menubar">
+                <div class="logo">
+                    <img src="images/logo.webp" alt="">
+                </div>
+                <div class="bars">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div class="mobile_overlay">
+                    <div class="mobilemenu">
+                        <div class="mobile_header">
+                            <img src="images/logo.webp" alt="">
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+                        <div class="mobile_footer">
+                            <ul>
+                                <li>home</li>
+                                <li>
+                                    destination
+                                    <i class="fa-solid fa-caret-down"></i>
+                                </li>
+                                <li>
+                                    destination by theme
+                                    <i class="fa-solid fa-caret-down"></i>
+                                </li>
+                                <li>blog</li>
+                                <li>
+                                    <i class="fa-solid fa-phone phone"></i>
+                                    +91 8887801385
+                                </li>
+                                <li>enquiry</li>
+                                <li>
+                                    <input type="text" placeholder="search">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="submenubar">
+                    <ul>
+                        <li>home</li>
+                        <li>
+                            destination
+                            <i class="fa-solid fa-caret-down"></i>
+                        </li>
+                        <li>
+                            destination by theme
+                            <i class="fa-solid fa-caret-down"></i>
+                        </li>
+                        <li>blog</li>
+                        <li>
+                            <i class="fa-solid fa-phone phone"></i>
+                            +91 8887801385
+                        </li>
+                        <li>enquiry</li>
+                        <li>
+                            <input type="text" placeholder="search">
+                        </li>
+                        <li> <i class="fa-solid fa-magnifying-glass search"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="main_c2">
+            <div class="c2_header">Experience the world with Us</div>
+            <div class="c2_text">Choose From Best Holiday Packages or Get Your Personalized Package</div>
+            <div class="explore">
+                <div class="package"> location</div>
+                <div class="package"> type of package</div>
+                <div class="package"> Duration</div>
+                <div class="package"> show packages</div>
+            </div>
+        </div>
+        <div class="main_c3">
+            <div class="c3_raw1">
+                <div class="c3_heading">Enjoy Your Trips to the Fullest</div>
+                <div class="c3_text">Make your travel dreams a reality!</div>
+            </div>
+            <div class="c3_raw2">
+                <div class="c3_img"> <img src="images/unwind.webp" alt=""></div>
+                <div class="c3_img"><img src="images/explore.webp" alt=""></div>
+                <div class="c3_img"><img src="images/natureloves.webp" alt=""></div>
+            </div>
+        </div>
+        <div class="main_c4">
+            <div class="c4_raw1">
+                <div class="c4_header">TRENDING PACKAGES</div>
+                <div class="c4_bottom">
+                    <div class="c4_img">
+                        <img src="images/manali.webp" alt="">
+                        <div class="img_text">
+                            manali
+                        </div>
+                        <div class="startingfrom">
+                            starting from
+                        </div>
+                        <div class="money">
+                            RS.9,000/-
+                        </div>
+                    </div>
+                    <div class="c4_img">
+                        <img src="images/andaman2.jpg" alt="">
+                        <div class="img_text">
+                            Andaman
+                        </div>
+                        <div class="startingfrom">
+                            starting from
+                        </div>
+                        <div class="money">
+                            RS.17,000/-
+                        </div>
+                    </div>
+                    <div class="c4_img">
+                        <img src="images/kerela.webp" alt="">
+                        <div class="img_text">
+                            Kerala 
+                        </div>
+                        <div class="startingfrom">
+                            starting from
+                        </div>
+                        <div class="money">
+                            RS.10,000/-
+                        </div>
+                    </div>
+                    <div class="c4_img">
+                        <img src="images/manali.webp" alt="">
+                        <div class="img_text">
+                            manali
+                        </div>
+                        <div class="startingfrom">
+                            starting from
+                        </div>
+                        <div class="money">
+                            RS.9,000/-
+                        </div>
+                    </div>
+                    <div class="c4_img">
+                        <img src="images/andaman2.jpg" alt="">
+                        <div class="img_text">
+                            manali
+                        </div>
+                        <div class="startingfrom">
+                            starting from
+                        </div>
+                        <div class="money">
+                            RS.17,000/-
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main_c5">
+            <div class="c5_raw1">
+                <div class="c5_heading">
+                    <div class="manalitourpackage"> Manali Tour Packages</div>
+                    <div class="viewallpackage">View All Packages</div>
+                </div>
+                <div class="c5_bottom">
+                    <div class="c5_img">
+                        <div class="c5_images">
+                            <img src="images/manalitourpackage.webp" alt="">
+                        </div>
+                        <div class="c5_images_text">
+                            <div class="c5_daynight"> 4 day 3 nights</div>
+                            <div class="c5_familytour">Manali Tour Package For Family</div>
+                            <div class="rupees">Rs. 11,500 <span class="discount">Rs. 11,500 </span> Per Person</div>
+                            <div class="sendenquiry"> send enquiry</div>
+                        </div>
+                    </div>
+                    <div class="c5_img">
+                        <div class="c5_images">
+                            <img src="images/manalitourpackage2.webp" alt="">
+                        </div>
+                        <div class="c5_images_text">
+                            <div class="c5_daynight"> 5 day 4 nights</div>
+                            <div class="c5_familytour">Manali Tour Package For Family</div>
+                            <div class="rupees">Rs. 10,500 <span class="discount">Rs. 14,000 </span> Per Person</div>
+                            <div class="sendenquiry"> send enquiry</div>
+                        </div>
+                    </div>
+                    <div class="c5_img">
+                        <div class="c5_images">
+                            <img src="images/manalitourpackage3.webp" alt="">
+                        </div>
+                        <div class="c5_images_text">
+                            <div class="c5_daynight"> 4 day 3 nights</div>
+                            <div class="c5_familytour">Manali Tour Package For Family</div>
+                            <div class="rupees">Rs. 9,000 <span class="discount">Rs. 13,000 </span> Per Person</div>
+                            <div class="sendenquiry"> send enquiry</div>
+                        </div>
+                    </div>
+                    <div class="c5_img">
+                        <div class="c5_images">
+                            <img src="images/manalitourpackage4.webp" alt="">
+                        </div>
+                        <div class="c5_images_text">
+                            <div class="c5_daynight"> 6 day 5 nights</div>
+                            <div class="c5_familytour">Manali Tour Package For Family</div>
+                            <div class="rupees">Rs. 23,000 <span class="discount">Rs. 30,000 </span> Per Person</div>
+                            <div class="sendenquiry"> send enquiry</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main_c5">
+            <div class="c5_raw1">
+                <div class="c5_heading">
+                    <div class="manalitourpackage"> Andaman Tour Packages</div>
+                    <div class="viewallpackage">View All Packages</div>
+                </div>
+                <div class="c5_bottom">
+                    <div class="c5_img">
+                        <div class="c5_images">
+                            <img src="images/andamanpackage1.webp" alt="">
+                        </div>
+                        <div class="c5_images_text">
+                            <div class="c5_daynight"> 7 day 6 nights</div>
+                            <div class="c5_familytour">Exotic Andaman 7 Days Tour</div>
+                            <div class="rupees">Rs. 30,000 <span class="discount">Rs. 40,000 </span> Per Person</div>
+                            <div class="sendenquiry"> <a href="">send enquiry </a></div>
+                        </div>
+                    </div>
+                    <div class="c5_img">
+                        <div class="c5_images">
+                            <img src="images/andamanpackage2.webp" alt="">
+                        </div>
+                        <div class="c5_images_text">
+                            <div class="c5_daynight"> 6 day 5 nights</div>
+                            <div class="c5_familytour">Amazing Andaman 6 Days Tour </div>
+                            <div class="rupees">Rs. 24,000 <span class="discount">Rs. 30,000 </span> Per Person</div>
+                            <div class="sendenquiry"> send enquiry</div>
+                        </div>
+                    </div>
+                    <div class="c5_img">
+                        <div class="c5_images">
+                            <img src="images/andamanpackage3.webp" alt="">
+                        </div>
+                        <div class="c5_images_text">
+                            <div class="c5_daynight"> 5 day 4 nights</div>
+                            <div class="c5_familytour">Manali Tour Package For Family</div>
+                            <div class="rupees">Rs. 9,000 <span class="discount">Rs. 13,000 </span> Per Person</div>
+                            <div class="sendenquiry"> send enquiry</div>
+                        </div>
+                    </div>
+                    <div class="c5_img">
+                        <div class="c5_images">
+                            <img src="images/andaman2.jpg" alt="">
+                        </div>
+                        <div class="c5_images_text">
+                            <div class="c5_daynight"> 6 day 5 nights</div>
+                            <div class="c5_familytour">Manali Tour Package For Family</div>
+                            <div class="rupees">Rs. 23,000 <span class="discount">Rs. 30,000 </span> Per Person</div>
+                            <div class="sendenquiry"> send enquiry</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main_c5">
+            <div class="c5_raw1">
+                <div class="c5_heading">
+                    <div class="manalitourpackage"> Kerala Tour Packages</div>
+                    <div class="viewallpackage">View All Packages</div>
+                </div>
+                <div class="c5_bottom">
+                    <div class="c5_img">
+                        <div class="c5_images">
+                            <img src="images/keraltourpackage1.webp" alt="">
+                        </div>
+                        <div class="c5_images_text">
+                            <div class="c5_daynight"> 7 day 6 nights</div>
+                            <div class="c5_familytour">Exotic Andaman 7 Days Tour</div>
+                            <div class="rupees">Rs. 30,000 <span class="discount">Rs. 40,000 </span> Per Person</div>
+                            <div class="sendenquiry"> <a href="">send enquiry </a></div>
+                        </div>
+                    </div>
+                    <div class="c5_img">
+                        <div class="c5_images">
+                            <img src="images/keralatourpackage2.webp" alt="">
+                        </div>
+                        <div class="c5_images_text">
+                            <div class="c5_daynight"> 6 day 5 nights</div>
+                            <div class="c5_familytour">Amazing Andaman 6 Days Tour </div>
+                            <div class="rupees">Rs. 24,000 <span class="discount">Rs. 30,000 </span> Per Person</div>
+                            <div class="sendenquiry"> send enquiry</div>
+                        </div>
+                    </div>
+                    <div class="c5_img">
+                        <div class="c5_images">
+                            <img src="images/keraltourpackage1.webp" alt="">
+                        </div>
+                        <div class="c5_images_text">
+                            <div class="c5_daynight"> 5 day 4 nights</div>
+                            <div class="c5_familytour">Manali Tour Package For Family</div>
+                            <div class="rupees">Rs. 9,000 <span class="discount">Rs. 13,000 </span> Per Person</div>
+                            <div class="sendenquiry"> send enquiry</div>
+                        </div>
+                    </div>
+                    <div class="c5_img">
+                        <div class="c5_images">
+                            <img src="images/keralatourpackage2.webp" alt="">
+                        </div>
+                        <div class="c5_images_text">
+                            <div class="c5_daynight"> 6 day 5 nights</div>
+                            <div class="c5_familytour">Manali Tour Package For Family</div>
+                            <div class="rupees">Rs. 23,000 <span class="discount">Rs. 30,000 </span> Per Person</div>
+                            <div class="sendenquiry"> send enquiry</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main_c6">
+            <div class="c6_raw1">
+                <div class="c6_bottom">
+                    <div class="popularplacesvisit"> Popular Places To Visit</div>
+                </div>
+                <div>
+                    <div class="c6_img">
+                        <div class="c6_images">
+                            <div class="c6_image1">
+                                <img src="images/popular1.webp" alt="">
+                            </div>
+                            <div class="c6_text">
+                                Manali
+                            </div>
+                        </div>
+                        <div class="c6_images">
+                            <div class="c6_image1">
+                                <img src="images/popular2.jpg" alt="">
+                            </div>
+                            <div class="c6_text">
+                                Andaman
+                            </div>
+                        </div>
+                        <div class="c6_images">
+                            <div class="c6_image1">
+                                <img src="images/popular3.webp" alt="">
+                            </div>
+                            <div class="c6_text">
+                                Kerala
+                            </div>
+                        </div>
+                        <div class="c6_images">
+                            <div class="c6_image1">
+                                <img src="images/popular1.webp" alt="">
+                            </div>
+                            <div class="c6_text">
+                                Manali
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main_c7">
+            <div class="c7_raw1">
+                <div class="c7_top">
+                    <div class="whychoseus">Why Choose Us ?</div>
+                    <div class="whybookwithplanyourtrip">Why Book With PlanYourTour!</div>
+                </div>
+                <div class="c7_bottom">
+                    <div class="c7_box">
+                        <div class="c7_logo">
+                            <img src="images/logo1.png" alt="">
+                        </div>
+                        <div class="c7_text">
+                            <div class="c7_customizedpackages">Customized Packages</div>
+                            <div>You can ask for your desired packages and we will be listening to you. You can choose
+                                and decide on destinations and sightseeing and we will manage that for you on a
+                                reasonable budget.</div>
+                        </div>
+                    </div>
+                    <div class="c7_box">
+                        <div class="c7_logo">
+                            <img src="images/logo2.png" alt="">
+                        </div>
+                        <div class="c7_text">
+                            <div class="c7_customizedpackages">Easy to Book</div>
+                            <div>The process of booking a tour with us is very easy. You can just fill out the inquiry
+                                form or call us and we will get back to you as soon as possible with exciting packages.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="c7_box">
+                        <div class="c7_logo">
+                            <img src="images/logo3.png" alt="">
+                        </div>
+                        <div class="c7_text">
+                            <div class="c7_customizedpackages">No Hidden Charges</div>
+                            <div>All the charges are included in the package. No other charge will be levied on our
+                                customers as we work in a customer-centric way.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main_c8">
+            <div class="c8_raw1">
+                <div class="c8_heading">
+                    <div class="c8_heading1">
+                        Happy Customers & Stories
+                    </div>
+                </div>
+                <div class="c8_bottom">
+                    <div class="c8_bottom_c1">
+                        <div class="c8_img">
+                            <img src="images/dd83fde8-8053-4bb0-b765-baba0849882e-1679469414.jpg" alt="">
+                        </div>
+                        <div class="c8_name">
+                            Karthik Kumar
+                        </div>
+                        <div class="c8_student">
+                            Student
+                        </div>
+                        <div class="c8_paragraph">
+                            <i class="fas fa-quote-left pe-2"></i>
+                            I recently booked a Manali Tour Package with PlanYourTour. I am so thankful for their
+                            itinerary and budget preferences. I will definitely suggest PlanYourTour for a hassle-free
+                            travel experience.
+                        </div>
+                        <div class="c8_stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="c8_bottom_c1">
+                        <div class="c8_img">
+                            <img src="images/mohitkumar.jpg" alt="">
+                        </div>
+                        <div class="c8_name">
+                            Mohit Sharma
+                        </div>
+                        <div class="c8_student">
+                            Traveler
+                        </div>
+                        <div class="c8_paragraph">
+                            <i class="fas fa-quote-left pe-2"></i>
+                            PlanYourTour Team was doing great work for my trip. There Itinerary was well-organized and
+                            the accommodation was top-notch. I Had an amazing experience. I will surely book my next
+                            trip with PlanYourTour.
+                        </div>
+                        <div class="c8_stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="c8_bottom_c1">
+                        <div class="c8_img">
+                            <img src="images/adya.jpg" alt="">
+                        </div>
+                        <div class="c8_name">
+                            Adya Mathur
+                        </div>
+                        <div class="c8_student">
+                            Travel Vlogger
+                        </div>
+                        <div class="c8_paragraph">
+                            <i class="fas fa-quote-left pe-2"></i>
+                            PlanYourTour made my time so wonderful. The Accommodation was luxurious and the activities
+                            were well-planned. Their Team is very friendly and always available to answer any question.
+                            I will surely use their services again & again.
+                        </div>
+                        <div class="c8_stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main_c9">
+            <div class="c9_raw1">
+                <div class="raw1_top">
+                    A Leading Travel Agency : PlanYourTour
+                </div>
+                <div class="raw1_bottom">
+                    <p>PlanYourTour is an emerging name in the tourism industry. With a customer-centric approach and
+                        budget-friendly packages, it is one of the primary agencies providing quality trip packages to
+                        various parts of India and Whole over the world. We are committed to providing you with
+                        beautiful memories to cherish for the rest of your lifetime.</p>
+                    <p>You can get a trip deal at reasonable prices by choosing from the existing trip packages.
+                        PlanYourTour is also flexible with creating a personalized package as per your demand. You can
+                        book a package for yourself, your friends, family, or colleagues and leave the rest to us. We
+                        will manage the trip as planned. The only thing you should be concerned about is, enjoying the
+                        time of the trip to the fullest.</p>
+                </div>
+            </div>
+        </div>
+        <div class="main_c10">
+            <div class="c10_raw1">
+                <div class="destination">
+                    <div class="destination1">
+                        Destination
+                    </div>
+                </div>
+                <div class="destination_names">
+                    <ul>
+                        <li><a href="">3 Night 4 Days Manali Tour Package</a></li>
+                        <li><a href="">3 Night 4 Days Manali Tour Package</a></li>
+                        <li><a href="">3 Night 4 Days Manali Tour Package</a></li>
+                        <li><a href="">3 Night 4 Days Manali Tour Package</a></li>
+                        <li><a href="">3 Night 4 Days Manali Tour Package</a></li>
+                        <li><a href="">3 Night 4 Days Manali Tour Package</a></li>
+                        <li><a href="">3 Night 4 Days Manali Tour Package</a></li>
+                    </ul>
+                </div>
+                <div class="destination1">
+                    Destination by Themes
+
+                </div>
+                <div class="destination_names">
+                    <ul>
+                        <li><a href="">3 Night 4 Days Manali Tour Package</a></li>
+                        <li><a href="">3 Night 4 Days Manali Tour Package</a></li>
+                        <li><a href="">3 Night 4 Days Manali Tour Package</a></li>
+                        <li><a href="">3 Night 4 Days Manali Tour Package</a></li>
+                        <li><a href="">3 Night 4 Days Manali Tour Package</a></li>
+                        <li><a href="">3 Night 4 Days Manali Tour Package</a></li>
+                        <li><a href="">3 Night 4 Days Manali Tour Package</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="main_c11">
+            <div class="c11_raw1">
+                <div class="c11_subscribe">
+                    Subscribe to Newsletters
+                </div>
+                <div class="c11_text"> And stay informed about our news and eventsf</div>
+                <div class="c11_inputbotton">
+                    <div class="input"> <input type="text" placeholder="Your name" class="inputbox"></div>
+                    <div class="input"> <input type="text" placeholder="Your Mobile Number" class="inputbox"></div>
+                    <div class="input"> <input type="text" placeholder="Enter email" class="inputbox"></div>
+                    <div class="subscibe">
+                        <i class="fa-brands fa-telegram"></i>
+                        <div class="subscribebutton">subscribe </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main_c12">
+            <div class="c12_raw">
+                <div class="c12_logo">
+                    <img src="images/logo.webp" alt="">
+                </div>
+                <p>PlanYourTour is a trusted travel agency that curates personalized travel experiences for its clients.
+                    With a team of experts, they offer end-to-end travel solutions, making travel planning hassle-free
+                    and enjoyable.</p>
+            </div>
+            <div class="c12_raw">
+                <div class="c12_raw_c2">
+                    Destination by Theme
+                </div>
+                <div class="c12_family"> family</div>
+                <div class="c12_family"> honeymoon</div>
+            </div>
+            <div class="c12_raw">
+                <ul>
+                    <li>Quicks Links</li>
+                    <li>Home</li>
+                    <li>About Us</li>
+                    <li>Blog</li>
+                    <li>Contact us</li>
+                    <li>Cancellation Policy</li>
+                </ul>
+            </div>
+            <div class="c12_raw4">
+                <ul>
+                    <li>Contact Us</li>
+                    <li>Address : India</li>
+                    <li><a href="">Call : +91 8887801385</a></li>
+                    <li><a href=""> Email : info@planyourtour.in</a></li>
+                </ul>
+                <div class="c12_logo">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-square-youtube"></i>
+                </div>
+            </div>
+        </div>
+        <div class="line"> </div>
+        <div class="main_c13">
+            <div class="c13_raw1">
+                <div class="c13_text"> <span class="c13_bottom">Terms & Conditions | Privacy Policy |</span> © PlanYourTour. All rights reserved.</div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
