@@ -27,7 +27,7 @@ const m2 = (req,res,next)=>{
 
 app.use(m);
 router1.use(m1);
-router2.use(m2);
+router2.use(m2);    
 
 app.get('/r1'  ,(req,res)=>{
     res.send('hello from route 1')

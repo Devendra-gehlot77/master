@@ -103,6 +103,8 @@ router4.get("/r20", (req, res) => {
 
 app.use('/cat2-user',router2);
 app.use('/cat3-user',router3);
+app.use('/cat4-user',router2);
+app.use('/cat4-user',router3);
 app.use('/cat4-user',router4);
 
 
