@@ -1,23 +1,23 @@
 const express = require("express");
-const mangoose = require("mangoose  ");
-const { default: mongoose,  } = require("mongoose");
 require("dotenv").config();
-const multer = require("multer");
+const path = require("path");
+const uploads = require("./middlwares/multer");
+const { addProduct, readproducts, updateProduct } = require("./controlers/productControlers");
+require("./db/config");
+
 
 const app = express();
-const url = `mongodb+srv://${process.env.DBUSER}:${process.env.DBPASSWORD}@${process.env.DBCLUSTER}.${process.env.DBCODE}.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority&appName=${process.env.DBCLUSTER}`;
 
-//  const productSchema = new mangoose.Schema();
+app.use("/api-files", express.static(path.join(__dirname, "uploads")));
+
+
+
+app.get('/insert-data',  uploads ('products'),addProduct);
+
+app.get('/read-data' , uploads ('products') ,readproducts);
+
+app.put('/update-product:_id', uploads ('products') , updateProduct)
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
-
-  mangoose.connect(url)
-  .then(()=>{
-    console.log('db connected!');
-  })
-  .catct((error)=>{
-        console.log(error)
-  })
-
 });
