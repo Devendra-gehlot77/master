@@ -110,19 +110,22 @@ const productCategoryByID = async (req, res) => {
 
 const updateProductCategory = async (req, res) => {
     try {
-        const ProductCategory = JSON.parse(req.body.ProductCategory); // Object sent from frontend using JSON.stringify should be converted using JSON.parse to read in backend
+
+        const oldData = await productCategoryModel.findById(req.params);
+        // const ProductCategory = JSON.parse(req.body.ProductCategory); // Object sent from frontend using JSON.stringify should be converted using JSON.parse to read in backend
+        // console.log(ProductCategory);
+        const data = req.body;
         if (req.files) {
             if (req.files.thumbnail) {
-                if (ProductCategory.thumbnail) { // checking if there is a thumbnail key in the old data
-                    if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product-category', ProductCategory.thumbnail))) { // checking if old file exists || __dirname giving path of this current productCategoryController.js file but not the path of project root directory, so used process.cwd() because it is giving path of root directory
-                        fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product-category', ProductCategory.thumbnail)); // deleting old file if it exists
+                if (oldData.thumbnail) { // checking if there is a thumbnail key in the old data
+                    if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product-category', oldData.thumbnail))) { // checking if old file exists || __dirname giving path of this current productCategoryController.js file but not the path of project root directory, so used process.cwd() because it is giving path of root directory
+                        fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product-category', oldData.thumbnail)); // deleting old file if it exists
                     }
                 }
-                ProductCategory.thumbnail = req.files.thumbnail[0].filename;
+                data.thumbnail = req.files.thumbnail[0].filename;
             }
         }
-
-        const response = await productCategoryModel.findByIdAndUpdate(req.params._id, ProductCategory)
+        const response = await productCategoryModel.findByIdAndUpdate(req.params._id, data)
         res.status(200).json({ message: 'successfully Updated', response });
 
         // if(Object.keys(req.files).length > 0) console.log(req.files); // if(req.files) <- this one was not working so used if(Object.keys(req.files).length > 0)

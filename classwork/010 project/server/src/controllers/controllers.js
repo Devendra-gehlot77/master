@@ -1,7 +1,10 @@
 //Admin controllers
 const { testAdmin,
     adminLogin,
-    registerAdmin } = require('./admin-panel/adminControllers')
+    registerAdmin, 
+    updateAdmin,
+    generateOTP,
+    updateEmail} = require('./admin-panel/adminControllers')
 
 //Color controllers
 const { addColor,
@@ -91,5 +94,8 @@ module.exports = {
     deletedProductCategories,
     recoverProductCategory,
     productCategoryByID,
-    updateProductCategory
+    updateProductCategory,
+    updateAdmin,
+    generateOTP,
+    updateEmail
 }
