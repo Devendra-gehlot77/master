@@ -42,6 +42,7 @@ const AddSizes = () => {
           });
         }
       })
+    e.target.reset();
   }
 
   return (
@@ -87,7 +88,7 @@ const AddSizes = () => {
             className="w-full input rounded-[5px] p-2 border my-[10px]"
           />
         </div>
-        <div className="w-full my-[10px]">
+        <div className="w-full m-[10px]">
           <label
             htmlFor="categoryStatus"
             className=" text-[#303640] mr-[20px]"
@@ -99,7 +100,7 @@ const AddSizes = () => {
             name="status"
             id="categoryStatus"
             value={true}
-
+            checked
             className="input my-[10px] mx-[10px] accent-[#5351c9] cursor-pointer"
           />
           <span>Display</span>

@@ -28,4 +28,3 @@ sizeSchema.pre('findByIdAndUpdate', function () {
 const sizeModel = mongoose.model('size', sizeSchema);
 
 module.exports = sizeModel;
-

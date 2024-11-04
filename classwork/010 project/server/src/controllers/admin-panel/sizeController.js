@@ -13,7 +13,16 @@ const createSize = async (req, res) => {
             return res.status(400).send({ message: "Size already exists." });
         }
         console.log(error);
+
+        if (error.code === 11000) { // MongoDB duplicate key error
+            return res.status(400).send({ message: "Category already exists." });
+        }
+
+        if (error.name == 'ValidationError') return res.status(400).json({ message: 'required fields are missing!' })
+
         res.status(500).json({ message: 'Internal Server Error' });
+
+
     }
 }
 
@@ -110,6 +119,55 @@ const recoverSize = async (req, res) => {
     }
 }
 
+const recoverSizes = async (req, res) => {
+    try {
+        const response = await sizeModel.updateMany(
+            { _id: req.body.checkedSizeIDsInBin },
+            {
+                $set: {
+                    deleted_at: null
+                }
+            });
+        res.status(200).json({ message: 'Successfully Deleted', response });
+
+    }
+    catch (error) {
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+}
+
+const activatedSizes = async (req, res) => {
+    try {
+        const data = await sizeModel.find({ status: true, deleted_at: null });
+        res.status(200).json({ message: 'success', data })
+    }
+    catch (error) {
+        res.status(500).json({ message: 'Internal Server Errror' });
+    }
+}
+
+const permanentDeleteSize = async (req, res) => {
+    try {
+        await sizeModel.deleteOne(req.params);
+        res.status(200).json({ message: 'Permanetly Deleted Successfully' })
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Internal Server Errror' });
+    }
+}
+
+const permanentDeleteSizes = async (req, res) => {
+    try {
+        await sizeModel.deleteMany({ _id: { $in: req.body.checkedSizeIDsInBin } });
+        res.status(200).json({ message: 'Permanetly Deleted Successfully' })
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Internal Server Errror' });
+    }
+}
+
 module.exports = {
     createSize,
     readSize,
@@ -119,5 +177,9 @@ module.exports = {
     sizeByID,
     updateSize,
     deletedSizes,
-    recoverSize
+    recoverSize,
+    activatedSizes,
+    permanentDeleteSize,
+    recoverSizes,
+    permanentDeleteSizes
 };

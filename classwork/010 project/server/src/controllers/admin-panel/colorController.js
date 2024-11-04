@@ -2,7 +2,6 @@ const colorModel = require("../../models/colorModel");
 
 const addColor = async (req, res) => {
     try {
-        console.log('hello')
         console.log(req.body);
         const dataToSave = new colorModel(req.body);
         const savedData = await dataToSave.save();
@@ -12,6 +11,8 @@ const addColor = async (req, res) => {
         if (error.code === 11000) { // MongoDB duplicate key error
             return res.status(400).send({ message: "Color already exists." });
         }
+
+        if (error.name == 'ValidationError') return res.status(400).json({ message: 'required fields are missing!' })
 
         res.status(500).json({ message: 'Internal Server Error' });
     }
@@ -111,6 +112,27 @@ const recoverColor = async (req, res) => {
     }
 }
 
+const activatedColors = async (req, res) => {
+    try {
+        const data = await colorModel.find({ status: true, deleted_at: null });
+        res.status(200).json({ message: 'success', data })
+    }
+    catch (error) {
+        res.status(500).json({ message: 'Internal Server Errror' });
+    }
+}
+
+const permanentDeleteColor = async (req, res) => {
+    try {
+        await colorModel.deleteOne(req.params);
+        res.status(200).json({ message: 'Permanetly Deleted Successfully' })
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Internal Server Errror' });
+    }
+}
+
 module.exports = {
     addColor,
     readColor,
@@ -120,5 +142,7 @@ module.exports = {
     colorByID,
     updateColor,
     deletedColors,
-    recoverColor
+    recoverColor,
+    activatedColors,
+    permanentDeleteColor
 }

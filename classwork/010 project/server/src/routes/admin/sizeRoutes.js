@@ -7,7 +7,11 @@ const { createSize,
     sizeByID,
     updateSize,
     deletedSizes,
-    recoverSize } = require('../../controllers/controllers');
+    recoverSize,
+    activatedSizes,
+    permanentDeleteSize,
+    recoverSizes, 
+    permanentDeleteSizes} = require('../../controllers/controllers');
 
 const sizeRouter = express.Router();
 
@@ -20,5 +24,9 @@ sizeRouter.get('/read-size/:_id', sizeByID);
 sizeRouter.put('/update-size/:_id', updateSize);
 sizeRouter.get('/deleted-sizes', deletedSizes);
 sizeRouter.put('/recover-size/:_id', recoverSize);
+sizeRouter.put('/recover-sizes', recoverSizes);
+sizeRouter.get('/activated-sizes', activatedSizes);
+sizeRouter.delete('/permanent-delete-size/:_id', permanentDeleteSize);
+sizeRouter.delete('/permanent-delete-sizes', permanentDeleteSizes);
 
 module.exports = sizeRouter;

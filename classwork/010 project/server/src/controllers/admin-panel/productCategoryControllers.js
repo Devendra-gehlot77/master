@@ -1,6 +1,7 @@
 const path = require("path");
 const productCategoryModel = require("../../models/productCategoryModel");
 const fs = require('fs');
+const productModel = require("../../models/productModel");
 
 const createProductCategory = async (req, res) => {
     try {
@@ -13,15 +14,20 @@ const createProductCategory = async (req, res) => {
         res.status(200).json({ message: 'successful', data: response });
     }
     catch (error) {
+        if (error.code === 11000) { // MongoDB duplicate key error
+            return res.status(400).send({ message: "Category already exists." });
+        }
+
         if (error.name == 'ValidationError') return res.status(400).json({ message: 'required fields are missing!' })
-        res.status(500).json({ message: 'Internal server error' })
+        res.status(500).json({ message: 'Internal server error' });
     }
 }
 
 const readProductCategory = async (req, res) => {
     try {
         const data = await productCategoryModel.find({ deleted_at: null }).populate('parent_category');
-        const filepath = `${req.protocol}://${req.get('host')}/frankandoakservices/admin-panel/`;
+        const filepath = `${req.protocol}://${req.get('host')}/frankandoakservices/admin-panel/product-category/`;
+
         res.status(200).json({ message: 'successful', data, filepath });
     }
     catch (error) {
@@ -100,7 +106,7 @@ const recoverProductCategory = async (req, res) => {
 const productCategoryByID = async (req, res) => {
     try {
         const data = await productCategoryModel.find({ _id: req.params._id }).populate('parent_category');
-        const filepath = `${req.protocol}://${req.get('host')}/frankandoakservices/admin-panel/`;
+        const filepath = `${req.protocol}://${req.get('host')}/frankandoakservices/admin-panel/product-category/`;
         res.status(200).json({ message: 'data by ID', data, filepath })
     }
     catch (error) {
@@ -139,6 +145,78 @@ const updateProductCategory = async (req, res) => {
     }
 }
 
+const activatedProductCategories = async (req, res) => {
+    try {
+        const data = await productCategoryModel.find({ status: true, deleted_at: null });
+        res.status(200).json({ message: 'success', data })
+    }
+    catch (error) {
+        res.status(500).json({ message: 'Internal Server Errror' });
+    }
+}
+
+const activeProductCategoriesByParentCategory = async (req, res) => {
+    try {
+        const data = await productCategoryModel.find({ status: true, deleted_at: null, parent_category: req.params._id }).populate('parent_category');
+        res.status(200).json({ message: 'success', data })
+    }
+    catch (error) {
+        res.status(500).json({ message: 'Internal Server Errror' });
+    }
+}
+
+const permanentDeleteProductCategory = async (req, res) => {
+    try {
+
+        const products = await productModel.find({ product_category: req.params._id });
+        const productCategories = await productCategoryModel.find(req.params);
+
+        console.log('products', products)
+        console.log('productCategory', productCategories);
+
+        products.map((product) => {
+            if (product.thumbnail) {
+                if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product', product.thumbnail))) { // checking if old file exists || __dirname giving path of this current productCategoryController.js file but not the path of project root directory, so used process.cwd() because it is giving path of root directory
+                    fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product', product.thumbnail)); // deleting old file if it exists
+                }
+            }
+
+            if (product.image_on_hover) {
+                if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product', product.image_on_hover))) { // checking if old file exists || __dirname giving path of this current productCategoryController.js file but not the path of project root directory, so used process.cwd() because it is giving path of root directory
+                    fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product', product.image_on_hover)); // deleting old file if it exists
+                }
+            }
+
+            if (product.gallery) {
+                product.gallery.map((img) => {
+                    if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product', img))) { // checking if old file exists || __dirname giving path of this current productCategoryController.js file but not the path of project root directory, so used process.cwd() because it is giving path of root directory
+                        fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product', img)); // deleting old file if it exists
+                    }
+                })
+            }
+        })
+
+
+        productCategories.map((productCategory) => {
+            if (productCategory.thumbnail) {
+                if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product-category', productCategory.thumbnail))) { // checking if old file exists || __dirname giving path of this current productCategoryController.js file but not the path of project root directory, so used process.cwd() because it is giving path of root directory
+                    fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product-category', productCategory.thumbnail)); // deleting old file if it exists
+                }
+            }
+        })
+
+
+        await productModel.deleteMany({ product_category: req.params._id })
+        await productCategoryModel.deleteOne(req.params);
+
+        res.status(200).json({ message: 'Permanetly Deleted Successfully' })
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Internal Server Errror' });
+    }
+}
+
 module.exports = {
     createProductCategory,
     readProductCategory,
@@ -149,5 +227,8 @@ module.exports = {
     deletedProductCategories,
     recoverProductCategory,
     productCategoryByID,
-    updateProductCategory
+    updateProductCategory,
+    activatedProductCategories,
+    activeProductCategoriesByParentCategory,
+    permanentDeleteProductCategory
 };

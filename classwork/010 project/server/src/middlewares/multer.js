@@ -31,6 +31,14 @@ const upload = (foldername) => multer({ storage: storage(foldername) }).fields(
         {
             name: 'footer_icon',
             maxCount: 1
+        },
+        {
+            name: 'image_on_hover',
+            maxCount: 1
+        },
+        {
+            name: 'gallery',
+            maxCount: 10
         }
     ]
 );

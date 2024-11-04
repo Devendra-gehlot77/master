@@ -210,6 +210,50 @@ const ViewColor = () => {
       })
   }
 
+  const handlePermanentDlt = (id, name) => {
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Deleting this Color will permanently remove it.!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        axios.delete(`${process.env.REACT_APP_API_URL}/api/admin-panel/color/permanent-delete-color/${id}`)
+          .then((response) => {
+            console.log(response.data.data);
+            fetchColor();
+            fetchDeletedColors();
+            toast.success(`${name} Color Deleted Permanently`, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+
+        Swal.fire({
+          title: "Deleted!",
+          text: "Color deleted successfully",
+          icon: "success"
+        });
+      }
+    });
+
+
+  }
+
 
   return (
     <div className="w-[90%] bg-white rounded-[10px] border mx-auto my-[150px]">
@@ -234,16 +278,7 @@ const ViewColor = () => {
             <table className="w-full">
               <thead>
                 <tr className="border-b text-left">
-                  <th className="flex p-2">
-                    <button onClick={handleMultiDlt} className="bg-[#5351c9] font-light text-white rounded-md p-1 w-[80px] h-[35px] my-[10px] mr-[10px]">
-                      Delete
-                    </button>
-                    <input onChange={handleMasterCheckbox} checked={isMasterSelectChecked}
-                      type="checkbox"
-                      name="deleteAll"
-                      className="cursor-pointer accent-[#5351c9] input"
-                    />
-                  </th>
+                  
                   <th className="p-2">Sno.</th>
                   <th className="p-2">Color Name</th>
                   <th className="p-2">Color</th>
@@ -254,13 +289,6 @@ const ViewColor = () => {
                 {
                   DeletedColors.map((color, index) => (
                     <tr className="border-b">
-                      <td className="p-2">
-                        <input value={color._id} checked={isChildSelectChecked[index]} onChange={(e) => handleChildCheckbox(e, index)}
-                          type="checkbox"
-                          name="delete"
-                          className="cursor-pointer accent-[#5351c9] input"
-                        />
-                      </td>
                       <td className="p-2">{index + 1}</td>
                       <td className="p-2">{color.name}</td>
                       <td className="p-2">
@@ -268,9 +296,9 @@ const ViewColor = () => {
                           className={`w-[90%] mx-auto h-[20px] border`}></div>
                       </td>
                       <td className="p-2">
-                        <MdDelete onClick={(e) => handleDlt(color._id, color.name)} className="my-[5px] text-red-500 cursor-pointer inline" />{" "}
+                        <MdDelete onClick={(e) => handlePermanentDlt(color._id, color.name)} className="my-[5px] text-red-500 cursor-pointer inline" />{" "}
                         |{" "}
-                          <BiRecycle onClick={() => handleRecover(color._id, color.name)} className="my-[5px] text-yellow-500 cursor-pointer inline" />
+                        <BiRecycle onClick={() => handleRecover(color._id, color.name)} className="my-[5px] text-yellow-500 cursor-pointer inline" />
                       </td>
 
                     </tr>

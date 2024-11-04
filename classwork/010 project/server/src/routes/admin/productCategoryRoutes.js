@@ -9,7 +9,10 @@ const { createProductCategory,
     deletedProductCategories,
     recoverProductCategory,
     productCategoryByID,
-    updateProductCategory } = require('../../controllers/controllers');
+    updateProductCategory,
+    activatedProductCategories,
+    activeProductCategoriesByParentCategory,
+    permanentDeleteProductCategory } = require('../../controllers/controllers');
 
 const upload = require('../../middlewares/multer');
 
@@ -25,5 +28,8 @@ productCategoryRoutes.get('/deleted-categories', deletedProductCategories);
 productCategoryRoutes.put('/recover-category/:_id', recoverProductCategory);
 productCategoryRoutes.get('/read-category/:_id', productCategoryByID);
 productCategoryRoutes.put('/update-category/:_id', upload('product-category'), updateProductCategory)
+productCategoryRoutes.get('/activated-categories', activatedProductCategories);
+productCategoryRoutes.put('/product-categories-by-parent-category/:_id', activeProductCategoriesByParentCategory);
+productCategoryRoutes.delete('/permanent-delete-category/:_id', permanentDeleteProductCategory);
 
 module.exports = productCategoryRoutes;

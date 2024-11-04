@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const parentCategorySchema = new mongoose.Schema({
     name: { type: String, required: true, unique: true },
     description: String,
-    status: { type: Boolean, default: true, set: value => value === '' ? true : value },
+    status: { type: Boolean, default: true},
     created_at: Date,
     update_at: Date,
     deleted_at: { type: Date, default: null }
@@ -28,4 +28,3 @@ parentCategorySchema.pre('findByIdAndUpdate', function () {
 const parentCategoryModel = mongoose.model('parent_category', parentCategorySchema);
 
 module.exports = parentCategoryModel;
-

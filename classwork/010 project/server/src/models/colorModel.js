@@ -28,4 +28,3 @@ colorSchema.pre('findByIdAndUpdate', function () {
 const colorModel = mongoose.model('color', colorSchema);
 
 module.exports = colorModel;
-

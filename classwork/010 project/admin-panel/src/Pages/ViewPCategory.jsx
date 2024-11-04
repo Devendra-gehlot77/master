@@ -236,6 +236,50 @@ const ViewCategory = () => {
       })
   }
 
+  const handlePermanentDlt = (id, name) => {
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Deleting this Product Category will permanently remove it, along with all linked Products.!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        axios.delete(`${process.env.REACT_APP_API_URL}/api/admin-panel/product-category/permanent-delete-category/${id}`)
+          .then((response) => {
+            console.log(response.data.data);
+            fetchProductCategories();
+            fetchDeletedProductCategories();
+            toast.success(`${name} Category Deleted Permanently`, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+
+        Swal.fire({
+          title: "Deleted!",
+          text: "Product Category deleted successfully, along with all linked Products.",
+          icon: "success"
+        });
+      }
+    });
+
+
+  }
+
   return (
     <div className="w-[90%] mx-auto my-[150px] bg-white rounded-[10px] border">
       <ToastContainer
@@ -250,7 +294,7 @@ const ViewCategory = () => {
         pauseOnHover
         theme="colored"
       />
-      <span className="flex  justify-between h-[40px] bg-[#f8f8f9] text-[20px] text-[#303640] p-[8px_16px] border-b rounded-[10px_10px_0_0]">
+      <span className="flex justify-between h-[40px] bg-[#f8f8f9] text-[20px] text-[#303640] p-[8px_16px] border-b rounded-[10px_10px_0_0]">
         View Category
         <FaTrash className="cursor-pointer" size={25} onClick={() => setOpen(true)} />
         <Modal open={open} onClose={() => setOpen(false)} center>
@@ -285,7 +329,7 @@ const ViewCategory = () => {
                       </td>
 
                       <td>
-                        <MdDelete className="my-[5px] text-red-500 cursor-pointer inline" />{" "}
+                        <MdDelete onClick={() => handlePermanentDlt(category._id, category.name)} className="my-[5px] text-red-500 cursor-pointer inline" />{" "}
                         |{" "}
                         <BiRecycle onClick={() => handleRecover(category._id, category.name)} className="my-[5px] text-yellow-500 cursor-pointer inline" />
                       </td>

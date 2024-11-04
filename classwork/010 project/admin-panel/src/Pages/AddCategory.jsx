@@ -10,6 +10,7 @@ const AddCategory = () => {
   const nav = useNavigate();
 
   const handleCreateCategory = (e) => {
+    
     e.preventDefault();
     axios.post(`${process.env.REACT_APP_API_URL}/api/admin-panel/parent-category/create-category`, {
       name: e.target.name.value,
@@ -47,6 +48,7 @@ const AddCategory = () => {
           });
         }
       });
+      e.target.reset();
   }
 
   return (
@@ -114,7 +116,7 @@ const AddCategory = () => {
               name="status"
               id="categoryStatus"
               value={true}
-
+              checked
               className="input my-[10px] mx-[10px] accent-[#5351c9] cursor-pointer"
             />
             <span>Display</span>

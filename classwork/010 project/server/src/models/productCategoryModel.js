@@ -9,8 +9,8 @@ const productCategorySchema = new mongoose.Schema({
     },
     slug:{ type: String, required: true, unique: true }, 
     description: String,
-    is_featured: { type: Boolean, default: false, set: value => value === '' ? false : value },
-    status: { type: Boolean, default: true, set: value => value === '' ? true : value },
+    is_featured: { type: Boolean, default: false},
+    status: { type: Boolean, default: true, set: value => value === '' ? true : value }, // in case if no value came from user, then set it to true otherwise that value, because when the page was on, there was nothing selected in radio button but we have now included 'checked' in the Display radion button as default in the checkede one so we won't need this attribute 'set', but i just put here for future reference, if i needed this code somewhere else
     created_at: Date,
     update_at: Date,
     deleted_at: { type: Date, default: null }

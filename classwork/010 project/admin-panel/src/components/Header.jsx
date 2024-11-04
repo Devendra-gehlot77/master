@@ -21,12 +21,12 @@ function Header() {
   let [profileDropDown, setProfileDropDown] = useState(false);
 
   useEffect(() => {
-    let admin_email = Cookies.get('admin_email')
-    if(!admin_email) nav('/');
+    let admin = Cookies.get('admin')
+    if(!admin) nav('/');
   }, [])
 
   const LogOut = () =>{
-    Cookies.remove('admin_email');
+    Cookies.remove('admin');
     nav('/');
   }
 

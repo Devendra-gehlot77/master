@@ -10,26 +10,24 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
   const nav = useNavigate();
   const [User, setUser] = useState({});
-
-
-
+  
   useEffect(() => {
-    let admin_email = Cookies.get('admin_email')
-    if (admin_email) nav('/dashboard');
+    let admin = Cookies.get('admin')
+    if (admin) nav('/dashboard');
   }, [])
 
   const handleLogin = () => {
 
     var inTenSeconds = new Date(new Date().getTime() + 100 * 60 * 1000);
 
-    axios.post("http://localhost:4800/api/admin-panel/admin/login", User)
+    axios.post(`${process.env.REACT_APP_API_URL}/api/admin-panel/admin/login`, User)
       .then((response) => {
         console.log(response.data);
-        Cookies.set("admin_email", JSON.stringify(response.data.data), { expires: inTenSeconds }); // User will only be loggedIn until the cookie is available (in this case, only Ten seconds)
+        Cookies.set("admin", JSON.stringify(response.data.data), { expires: inTenSeconds }); // User will only be loggedIn until the cookie is available (in this case, only Ten seconds)
         nav('/dashboard');
       })
       .catch((error) => {
-        let showErr="error";
+        let showErr = "error";
         if (error.message) showErr = error.message;
         if (error.response) showErr = error.response.data.message;
 

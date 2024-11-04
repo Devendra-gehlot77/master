@@ -196,7 +196,51 @@ const ViewCategory = () => {
     }
   }
 
-  const handleRecover = (id,name) => {
+  const handlePermanentDlt = (id, name) => {
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Deleting this Parent Category will permanently remove it, along with all linked Products and Product Categories.!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        axios.delete(`${process.env.REACT_APP_API_URL}/api/admin-panel/parent-category/permanent-delete-category/${id}`)
+          .then((response) => {
+            console.log(response.data.data);
+            fetchParentCategories();
+            fetchDeletedParentCategories();
+            toast.success(`${name} Category Deleted Permanently`, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+
+        Swal.fire({
+          title: "Deleted!",
+          text: "Parent Category deleted successfully, along with all linked Products and Product Categories.!",
+          icon: "success"
+        });
+      }
+    });
+
+
+  }
+
+  const handleRecover = (id, name) => {
     axios.put(`${process.env.REACT_APP_API_URL}/api/admin-panel/parent-category/recover-category/${id}`)
       .then((response) => {
         console.log(response.data.data);
@@ -241,10 +285,7 @@ const ViewCategory = () => {
             <table className="w-full">
               <thead>
                 <tr className="text-left border-b">
-                  <th>
-                    <button className="bg-red-400 rounded-sm px-2 py-1">Empty Bin</button>
-                    <input type="checkbox" name="deleteAll" id="deleteAllCat" className="accent-[#5351c9]" />
-                  </th>
+                
                   <th>Sno</th>
                   <th>Category Name</th>
 
@@ -256,16 +297,12 @@ const ViewCategory = () => {
                 {
                   DeletedParentCategories.map((parentCategory, index) => (
                     <tr className="border-b">
-                      <td>
-                        <input type="checkbox" name={`checkbox${index}`} id="delete1" className="accent-[#5351c9] cursor-pointer" />
-                      </td>
                       <td>{index + 1}</td>
                       <td>{parentCategory.name}</td>
                       <td>
-                        <MdDelete className="my-[5px] text-red-500 cursor-pointer inline" />{" "}
+                        <MdDelete onClick={() => handlePermanentDlt(parentCategory._id, parentCategory.name)} className="my-[5px] text-red-500 cursor-pointer inline" />{" "}
                         |{" "}
-                        <BiRecycle onClick={() => handleRecover(parentCategory._id,parentCategory.name)} className="my-[5px] text-yellow-500 cursor-pointer inline" />
-
+                        <BiRecycle onClick={() => handleRecover(parentCategory._id, parentCategory.name)} className="my-[5px] text-yellow-500 cursor-pointer inline" />
                       </td>
                     </tr>
                   ))

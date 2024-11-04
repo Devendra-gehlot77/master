@@ -111,7 +111,7 @@ const updateAdmin = async (req, res) => {
 const generateOTP = async (req, res) => {
     try {
         otpData.clear();
-        
+
         const otp = Math.floor(Math.random() * 900000);
         console.log(otpData);
         otpData.set(req.body.email, otp);
@@ -127,7 +127,7 @@ const generateOTP = async (req, res) => {
 
         const info = await transporter.sendMail({
             from: '"Frank and Oak" <frankandoak@gmail.com>',
-            to: 'avimationss39228@gmail.com',
+            to: 'avimations39228@gmail.com',
             subject: 'OTP for Email Change for Frank and Oak',
             text: ``, // can't add html, only plan text
             body: `<i><b>Your OTP is : ${otp}</b></i>`, // doesn't show anywhere in the mail  // mail with html attribute, but if included, will overwrite the text attribute

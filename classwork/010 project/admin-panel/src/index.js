@@ -88,7 +88,7 @@ const routes = createBrowserRouter(
         element={<ViewProduct />}
       />
       <Route
-        path="/dashboard/products/update-product"
+        path="/dashboard/products/update-product/:_id"
         element={<UpdateProduct />}
       />
       ,

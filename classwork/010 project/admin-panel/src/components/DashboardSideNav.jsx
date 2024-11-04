@@ -31,7 +31,7 @@ function DashboardSideNav() {
   let { navVisible } = useContext(NavToggle);
 
   const LogOut = () =>{
-    Cookies.remove('admin_email');
+    Cookies.remove('admin');
     nav('/');
   }
   return (
