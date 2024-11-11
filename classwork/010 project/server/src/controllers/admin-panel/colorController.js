@@ -8,7 +8,7 @@ const addColor = async (req, res) => {
         res.status(200).json({ message: 'Color Controller', data: savedData });
     }
     catch (error) {
-        if (error.code === 11000) { // MongoDB duplicate key error
+        if (error.code === 11000) { 
             return res.status(400).send({ message: "Color already exists." });
         }
 
@@ -57,7 +57,7 @@ const deleteColors = async (req, res) => {
             }
         });
         res.status(200).json({ message: 'Successfully Deleted', response });
-        // console.log(req.body.checkedCategoriesIDs);
+        
 
     }
     catch (error) {
@@ -85,7 +85,7 @@ const updateColor = async (req, res) => {
         res.status(200).json({ message: 'successfully Updated', response });
     }
     catch (error) {
-        if (error.code === 11000) { // MongoDB duplicate key error
+        if (error.code === 11000) { 
             return res.status(400).send({ message: "Color already exists." });
         }
         res.status(500).json({ message: 'Internal Server Errror' });

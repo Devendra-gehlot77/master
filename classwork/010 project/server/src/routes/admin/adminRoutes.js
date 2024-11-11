@@ -3,8 +3,8 @@ const { testAdmin, adminLogin, updateAdmin, generateOTP, updateEmail } = require
 const upload = require('../../middlewares/multer');
 const adminRoutes = express.Router();
 
-adminRoutes.get('/test-admin', testAdmin); // http://localhost:4000/api/admin-panel/test-admin
-adminRoutes.post('/login', adminLogin); // http://localhost:4000/api/admin-panel/login
+adminRoutes.get('/test-admin', testAdmin); 
+adminRoutes.post('/login', adminLogin); 
 adminRoutes.put('/update-admin/:_id', upload('admin'), updateAdmin);
 adminRoutes.post('/generate-otp', generateOTP);
 adminRoutes.post('/update-email', updateEmail);

@@ -14,7 +14,7 @@ const createProductCategory = async (req, res) => {
         res.status(200).json({ message: 'successful', data: response });
     }
     catch (error) {
-        if (error.code === 11000) { // MongoDB duplicate key error
+        if (error.code === 11000) { 
             return res.status(400).send({ message: "Category already exists." });
         }
 
@@ -75,7 +75,7 @@ const deleteProductCategories = async (req, res) => {
             }
         });
         res.status(200).json({ message: 'Successfully Deleted', response });
-        // console.log(req.body.checkedCategoriesIDs);
+        
 
     }
     catch (error) {
@@ -118,14 +118,12 @@ const updateProductCategory = async (req, res) => {
     try {
 
         const oldData = await productCategoryModel.findById(req.params);
-        // const ProductCategory = JSON.parse(req.body.ProductCategory); // Object sent from frontend using JSON.stringify should be converted using JSON.parse to read in backend
-        // console.log(ProductCategory);
         const data = req.body;
         if (req.files) {
             if (req.files.thumbnail) {
-                if (oldData.thumbnail) { // checking if there is a thumbnail key in the old data
-                    if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product-category', oldData.thumbnail))) { // checking if old file exists || __dirname giving path of this current productCategoryController.js file but not the path of project root directory, so used process.cwd() because it is giving path of root directory
-                        fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product-category', oldData.thumbnail)); // deleting old file if it exists
+                if (oldData.thumbnail) { 
+                    if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product-category', oldData.thumbnail))) { 
+                        fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product-category', oldData.thumbnail)); 
                     }
                 }
                 data.thumbnail = req.files.thumbnail[0].filename;
@@ -134,7 +132,7 @@ const updateProductCategory = async (req, res) => {
         const response = await productCategoryModel.findByIdAndUpdate(req.params._id, data)
         res.status(200).json({ message: 'successfully Updated', response });
 
-        // if(Object.keys(req.files).length > 0) console.log(req.files); // if(req.files) <- this one was not working so used if(Object.keys(req.files).length > 0)
+        
     }
     catch (error) {
         console.log(error);
@@ -176,21 +174,21 @@ const permanentDeleteProductCategory = async (req, res) => {
 
         products.map((product) => {
             if (product.thumbnail) {
-                if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product', product.thumbnail))) { // checking if old file exists || __dirname giving path of this current productCategoryController.js file but not the path of project root directory, so used process.cwd() because it is giving path of root directory
-                    fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product', product.thumbnail)); // deleting old file if it exists
+                if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product', product.thumbnail))) {
+                    fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product', product.thumbnail)); 
                 }
             }
 
             if (product.image_on_hover) {
-                if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product', product.image_on_hover))) { // checking if old file exists || __dirname giving path of this current productCategoryController.js file but not the path of project root directory, so used process.cwd() because it is giving path of root directory
-                    fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product', product.image_on_hover)); // deleting old file if it exists
+                if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product', product.image_on_hover))) { 
+                    fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product', product.image_on_hover));
                 }
             }
 
             if (product.gallery) {
                 product.gallery.map((img) => {
-                    if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product', img))) { // checking if old file exists || __dirname giving path of this current productCategoryController.js file but not the path of project root directory, so used process.cwd() because it is giving path of root directory
-                        fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product', img)); // deleting old file if it exists
+                    if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product', img))) { 
+                        fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product', img)); 
                     }
                 })
             }
@@ -199,8 +197,8 @@ const permanentDeleteProductCategory = async (req, res) => {
 
         productCategories.map((productCategory) => {
             if (productCategory.thumbnail) {
-                if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product-category', productCategory.thumbnail))) { // checking if old file exists || __dirname giving path of this current productCategoryController.js file but not the path of project root directory, so used process.cwd() because it is giving path of root directory
-                    fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product-category', productCategory.thumbnail)); // deleting old file if it exists
+                if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product-category', productCategory.thumbnail))) { 
+                    fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product-category', productCategory.thumbnail)); 
                 }
             }
         })

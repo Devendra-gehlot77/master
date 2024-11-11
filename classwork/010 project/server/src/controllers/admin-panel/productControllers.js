@@ -22,7 +22,7 @@ const createProduct = async (req, res) => {
             if (error.errors.price && error.errors.price.kind == 'Number' || error.errors.mrp && error.errors.mrp.kind == 'Number') return res.status(400).json({ message: 'price/mrp should be in a Number!' })
         }
 
-        if (error.code === 11000) { // MongoDB duplicate key error
+        if (error.code === 11000) { 
             return res.status(400).send({ message: "Product with the same name already exists." });
         }
 
@@ -37,17 +37,6 @@ const readProducts = async (req, res) => {
         const filepath = `${req.protocol}://${req.get('host')}/frankandoakservices/admin-panel/product/`;
 
         res.status(200).json({ message: 'successful', data, filepath });
-
-        /*
-        
-        const products = await productModel.find({ deleted_at: null }).populate('parent_category').populate('product_category').populate('size').populate('color').lean();
-        // Using .lean() with mongoose queries will make Mongoose skip the creation of a full Mongoose document(with our data being in _doc key when trying to add new key in the returned result from mongoose query), instead returning a plain JavaScript object. We needed to add a new key(filepath) to every product we get but adding a new key map on all products, the data wasn't reaching in front-end in appropriate format but in with some newly unwanted keys and our data being in '_doc' key.  https://stackoverflow.com/questions/18821212/mongoose-whats-up-with-doc
-        const filepath = `${req.protocol}://${req.get('host')}/frankandoakservices/admin-panel/product/`;
-
-        const data = products.map((product) => ({ ...product, filepath: filepath }));
-        res.status(200).json({ message: 'successful', data });
-
-        */
     }
     catch (error) {
         console.log(error);
@@ -65,7 +54,7 @@ const updateStatusProduct = async (req, res) => {
     }
 }
 
-const deleteProduct = async (req, res) => { // soft delete
+const deleteProduct = async (req, res) => { 
     try {
         const response = await productModel.findByIdAndUpdate(req.params._id, { deleted_at: Date.now() })
         res.status(200).json({ message: 'successfully Deleted', response });
@@ -139,26 +128,26 @@ const updateProduct = async (req, res) => {
         const data = req.body;
         if (req.files) {
             if (req.files.thumbnail) {
-                if (oldData.thumbnail) { // checking if there is a thumbnail key in the old data
-                    if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product', oldData.thumbnail))) { // checking if old file exists || __dirname giving path of this current productCategoryController.js file but not the path of project root directory, so used process.cwd() because it is giving path of root directory
-                        fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product', oldData.thumbnail)); // deleting old file if it exists
+                if (oldData.thumbnail) { 
+                    if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product', oldData.thumbnail))) {
+                        fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product', oldData.thumbnail)); 
                     }
                 }
                 data.thumbnail = req.files.thumbnail[0].filename;
             }
             if (req.files.image_on_hover) {
-                if (oldData.image_on_hover) { // checking if there is a image_on_hover key in the old data
-                    if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product', oldData.image_on_hover))) { // checking if old file exists || __dirname giving path of this current productCategoryController.js file but not the path of project root directory, so used process.cwd() because it is giving path of root directory
-                        fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product', oldData.image_on_hover)); // deleting old file if it exists
+                if (oldData.image_on_hover) { 
+                    if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product', oldData.image_on_hover))) { 
+                        fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product', oldData.image_on_hover)); 
                     }
                 }
                 data.image_on_hover = req.files.image_on_hover[0].filename;
             }
             if (req.files.gallery) {
-                if (oldData.gallery) { // checking if there is a gallery key in the old data
+                if (oldData.gallery) { 
                     oldData.gallery.map((img) => {
-                        if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product', img))) { // checking if old file exists || __dirname giving path of this current productCategoryController.js file but not the path of project root directory, so used process.cwd() because it is giving path of root directory
-                            fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product', img)); // deleting old file if it exists
+                        if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product', img))) { 
+                            fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product', img)); 
                         }
                     })
 
@@ -171,10 +160,7 @@ const updateProduct = async (req, res) => {
     }
     catch (error) {
         console.log(error);
-        // console.log(error.kind);
-        // console.log(error.path);
-        // console.log(error.reason.path);
-        if (error.code === 11000) { // MongoDB duplicate key error
+        if (error.code === 11000) { 
             return res.status(400).send({ message: "Product already exists with the same name." });
         }
         if (error.name == 'ValidationError') return res.status(400).json({ message: 'required fields are missing!' })
@@ -192,9 +178,9 @@ const permanentDeleteProduct = async (req, res) => {
 
         if (oldData) {
             
-                if (oldData.thumbnail) { // checking if there is a thumbnail key in the old data
-                    if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product', oldData.thumbnail))) { // checking if old file exists || __dirname giving path of this current productCategoryController.js file but not the path of project root directory, so used process.cwd() because it is giving path of root directory
-                        fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product', oldData.thumbnail)); // deleting old file if it exists
+                if (oldData.thumbnail) { 
+                    if (fs.existsSync(path.join(process.cwd(), 'src', 'uploads', 'product', oldData.thumbnail))) { 
+                        fs.unlinkSync(path.join(process.cwd(), 'src', 'uploads', 'product', oldData.thumbnail)); 
                     }
                 }
             
@@ -217,7 +203,7 @@ const permanentDeleteProduct = async (req, res) => {
 
         }
 
-        const data = await productModel.findOneAndDelete(req.params); // The deleteOne method in Mongoose only returns information about the delete operation's success but does not provide the details of the deleted document itself. To get the details of the deleted document, you can use findOneAndDelete instead, which will delete the document and return its details in a single operation
+        const data = await productModel.findOneAndDelete(req.params); 
         res.status(200).json({ message: 'product deleted permanently', data });
     }
     catch (error) {

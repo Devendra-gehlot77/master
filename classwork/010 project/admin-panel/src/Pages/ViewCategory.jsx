@@ -37,6 +37,8 @@ const ViewCategory = () => {
         console.log(error);
       });
   }
+
+
   const updateStatus = (e) => {
     const status = (e.target.textContent !== 'Active');
     axios.put(`${process.env.REACT_APP_API_URL}/api/admin-panel/parent-category/update-status/${e.target.value}`, { status })
@@ -262,6 +264,23 @@ const ViewCategory = () => {
       })
   }
 
+
+  const handleSearchCategories = (e) =>{
+      console.log(e.target.value)
+
+      if(e.target.value === '') return fetchParentCategories();
+
+      axios.get(`${process.env.REACT_APP_API_URL}/api/admin-panel/parent-category/search-category/${e.target.value}`)
+      .then((response) =>{
+        console.log(response.data)
+        setparentCategories(response.data.data)
+      })
+      .catch((error)=>{
+        console.log(error)
+      })
+  }
+
+
   return (
     <div className="w-[90%] mx-auto my-[150px] bg-white rounded-[10px] border">
       <ToastContainer
@@ -319,6 +338,9 @@ const ViewCategory = () => {
 
       </span>
       <div className="w-[90%] mx-auto my-[20px]">
+      <div>
+              <input type="text" className="w-full p-1 my-3 border" onChange={handleSearchCategories} />
+        </div>
         <table className="w-full">
           <thead>
             <tr className="text-left border-b">

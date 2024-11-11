@@ -9,12 +9,12 @@ const createSize = async (req, res) => {
         res.status(200).json({ message: 'Size Controller', data: savedData });
     }
     catch (error) {
-        if (error.code === 11000) { // MongoDB duplicate key error
+        if (error.code === 11000) { 
             return res.status(400).send({ message: "Size already exists." });
         }
         console.log(error);
 
-        if (error.code === 11000) { // MongoDB duplicate key error
+        if (error.code === 11000) { 
             return res.status(400).send({ message: "Category already exists." });
         }
 
@@ -92,7 +92,7 @@ const updateSize = async (req, res) => {
         res.status(200).json({ message: 'successfully Updated', response });
     }
     catch (error) {
-        if (error.code === 11000) { // MongoDB duplicate key error
+        if (error.code === 11000) { 
             return res.status(400).send({ message: "Category already exists." });
         }
         res.status(500).json({ message: 'Internal Server Errror' });
